@@ -43,6 +43,7 @@ server {
     internal;
     proxy_pass <%= settings['auth'] %>;
     proxy_pass_request_body off;
+    proxy_buffering         off;
     proxy_set_header        Content-Length "";
     proxy_set_header        X-Original-URI $request_uri;
     proxy_set_header        Host              $host;
@@ -60,6 +61,7 @@ server {
     root <%= endpoint.sub(/^file:\/\//, '') %>;
 <% else -%>
     proxy_pass              <%= endpoint %>;
+    proxy_buffering         off;
     proxy_redirect          off;
     proxy_set_header        Host              $host;
     proxy_set_header        X-Real-IP         $remote_addr;
