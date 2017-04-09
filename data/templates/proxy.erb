@@ -70,7 +70,7 @@ server {
 <% if File.exist?('data/nginx/dhparam/dhparam.pem') -%>
   ssl_dhparam /etc/nginx/dhparam/dhparam.pem;
 <% end -%>
-  add_header                Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+ # add_header                Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
 <% unless settings['auth_error'].nil? -%>
   error_page 401 = @error401;
