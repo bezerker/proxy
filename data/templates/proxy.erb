@@ -32,10 +32,6 @@ server {
 <% end -%>
   add_header                Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
-  location /.well-known/acme-challenge {
-    root /var/www/letsencrypt/;
-  }
-
 <% unless settings['auth_error'].nil? -%>
   error_page 401 = @error401;
   location @error401 {
@@ -78,5 +74,8 @@ server {
   }
 <% end -%>
 <% end -%>
+  location /.well-known/acme-challenge {
+    root /var/www/letsencrypt/;
+  }
 }
 <% end -%>
